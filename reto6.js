@@ -9,13 +9,13 @@ Para probar vamos a hacer 5 operaciones por cada función.
 Y como plus, debemos validar que los parámetros si cumplan con que sean números. Si pasa algo diferente como 
 un texto u otro objeto, entonces debemos imprimir el error y devolver cero en ese caso */
 
-let num1, num2, operacion, operador;
+let num1, num2, operacion, operador, resultado;
 
 
 //operacion = prompt("Escribe la operacion completa que desea realizar: "+"recuerde que estos son los operadores + - / * ^ ");
-operacion = '34^5'
+operacion = '9*100'
 
-num1 = parseFloat(seleccionNumero(operacion))
+num1 = parseFloat(seleccionNumero(operacion));
 
 operador = seleccionOperador(operacion)
 
@@ -23,36 +23,43 @@ num2 = parseFloat(seleccionNumero2(operacion))
 
 switch (operador) {
     case "+":
-        console.log(suma(num1, num2))
+        console.log(suma(num1, num2));
         break;
 
     case "-":
-        console.log(resta(num1, num2))
+        console.log(resta(num1, num2));
         break;
 
     case "*":
-        console.log(multiplicacion(num1, num2))
+        console.log(multiplicacion(num1, num2));
         break;
 
     case "/":
-        console.log(division(num1, num2))
+        console.log(division(num1, num2));
         break;
 
     case "^":
-        console.log(potenciacion(num1, num2))
+        console.log(potenciacion(num1, num2));
         break;
 
     default:
+        console.log('0');
         break;
 }
+
 
 
 function seleccionNumero(operacion) {
     let numero = '';
     for (let i = 0; i < operacion.length; i++) {
-        if (operacion.charCodeAt(i) > 47 && operacion.charCodeAt(i) < 57 || operacion.charCodeAt(i) == 46) {
+        if (operacion.charCodeAt(i) > 47 && operacion.charCodeAt(i) < 58 || operacion.charCodeAt(i) == 46) {
             numero = numero + operacion[i]
-        } else break
+        } else if (operacion.charCodeAt(i) == 42 || operacion.charCodeAt(i) == 43 || operacion.charCodeAt(i) == 45 || operacion.charCodeAt(i) == 47 || operacion.charCodeAt(i) == 94){
+            break
+        } else {
+            console.log('error al ingresar el numero');
+            return numero = '';
+        }
     }
     return numero
 }
@@ -74,9 +81,12 @@ function seleccionNumero2(operacion) {
     let numero = '';
     for (let i = 0; i < operacion.length; i++) {
         if (operacion.charCodeAt(i) == 42 || operacion.charCodeAt(i) == 43 || operacion.charCodeAt(i) == 45 || operacion.charCodeAt(i) == 47 || operacion.charCodeAt(i) == 94)
-            for (let j = i; j < operacion.length; j++) {
-                if (operacion.charCodeAt(j) > 47 && operacion.charCodeAt(j) < 57 || operacion.charCodeAt(j) == 46) {
+            for (let j = i+1; j < operacion.length; j++) {
+                if (operacion.charCodeAt(j) > 47 && operacion.charCodeAt(j) < 58 || operacion.charCodeAt(j) == 46) {
                     numero = numero + operacion[j]
+                } else {
+                    console.log('Error al ingresar el numero2');
+                    return numero = '';
                 }
             }
 
