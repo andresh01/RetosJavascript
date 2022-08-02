@@ -13,7 +13,7 @@ let num1, num2, operacion, operador, resultado;
 
 
 //operacion = prompt("Escribe la operacion completa que desea realizar: "+"recuerde que estos son los operadores + - / * ^ ");
-operacion = '9*100'
+operacion = '9.5*1.4'
 
 num1 = parseFloat(seleccionNumero(operacion));
 
@@ -54,7 +54,7 @@ function seleccionNumero(operacion) {
     for (let i = 0; i < operacion.length; i++) {
         if (operacion.charCodeAt(i) > 47 && operacion.charCodeAt(i) < 58 || operacion.charCodeAt(i) == 46) {
             numero = numero + operacion[i]
-        } else if (operacion.charCodeAt(i) == 42 || operacion.charCodeAt(i) == 43 || operacion.charCodeAt(i) == 45 || operacion.charCodeAt(i) == 47 || operacion.charCodeAt(i) == 94){
+        } else if (operacion.charCodeAt(i) == 42 || operacion.charCodeAt(i) == 43 || operacion.charCodeAt(i) == 45 || operacion.charCodeAt(i) == 47 || operacion.charCodeAt(i) == 94) {
             break
         } else {
             console.log('error al ingresar el numero');
@@ -81,7 +81,7 @@ function seleccionNumero2(operacion) {
     let numero = '';
     for (let i = 0; i < operacion.length; i++) {
         if (operacion.charCodeAt(i) == 42 || operacion.charCodeAt(i) == 43 || operacion.charCodeAt(i) == 45 || operacion.charCodeAt(i) == 47 || operacion.charCodeAt(i) == 94)
-            for (let j = i+1; j < operacion.length; j++) {
+            for (let j = i + 1; j < operacion.length; j++) {
                 if (operacion.charCodeAt(j) > 47 && operacion.charCodeAt(j) < 58 || operacion.charCodeAt(j) == 46) {
                     numero = numero + operacion[j]
                 } else {
@@ -121,3 +121,49 @@ function division(num1, num2) {
     }
 }
 
+/** Vamos a crear una arrow function para pasarla como callback a un .map( ) 
+ * que se le aplicará a una lista de strings, está función tendrá la capacidad 
+ * de encriptar nuestro lenguaje, y lo que hará es */
+
+//1. Primero convertir todo el mensaje a mayúscula:
+
+texto = ["Los números pueden utilizarse como letras, y la frase resultante puede ser leída sin mucho esfuerzo.", "Este es un mensaje super encriptado y solo los mejores podrán leerlo."]
+
+/* console.log(texto.map(lc))
+
+function lc(txt) {
+    return txt.toUpperCase()
+} */
+
+/* console.log(texto.map(function (txt) {
+    return txt.toUpperCase()
+})) */
+
+texto = texto.map(txt => txt.toUpperCase())
+
+/**2. Convertir los siguientes carácteres:
+● A -> 4
+● S -> 5
+● E -> 3
+● O -> 0
+● G -> 6
+● I -> 1 
+● T -> 7 */
+
+/* const encriptar = texto.map(function(tx){
+    return tx.replace(/A/gi,"4").replace(/S/gi,"5").replace(/E/gi,"3").replace(/O/gi,"0").replace(/G/gi,"6").replace(/I/gi,"1").replace(/T/gi,"7")
+})
+
+console.log(encriptar) */
+
+const encriptar = texto.map(tx => tx.replace(/A/gi,"4").replace(/S/gi,"5").replace(/E/gi,"3").replace(/O/gi,"0").replace(/G/gi,"6").replace(/I/gi,"1").replace(/T/gi,"7")
+)
+
+const encriptar2 = texto.map(tx => tx.replaceAll("A","4").replaceAll("S","5").replaceAll("E","3").replaceAll("O","0").replaceAll("G","6").replaceAll("I","1").replaceAll("T","7")
+)
+
+console.log(encriptar)
+console.log(encriptar2)
+
+console.log(encriptar[0])
+console.log(encriptar[1])
