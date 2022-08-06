@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="chiste"></h1>
+    <h2 id="respuesta"></h2>
+    <script>
+        const endpoint = 'https://api.dadjokes.io/api/random/joke'
+        fetch(endpoint)
+        .then(response => response.json())
+        .then(data => {
+            
+            document.getElementById("chiste").innerHTML=data.body[0].setup
+            document.getElementById("respuesta").innerHTML=data.body[0].punchline
+        }).catch(error => {
+            document.getElementById("chiste").innerHTML = "Error"
+        })
+
+        /* const endpoint = 'https://api.dadjokes.io/api/random/joke'
+        fetch(endpoint)
+        .then (response => response.json())
+        .then (data => {
+            const listaChiste = data.body;
+            const primerChiste = listaChiste[0];
+            const chiste = primerChiste.punchline;
+            document.getElementById("chiste").innerHTML = chiste;
+            console.log(chiste,respuesta)
+        }) */
+
+    </script>
+</body>
+</html>
+

@@ -13,7 +13,7 @@ let num1, num2, operacion, operador, resultado;
 
 
 //operacion = prompt("Escribe la operacion completa que desea realizar: "+"recuerde que estos son los operadores + - / * ^ ");
-operacion = '9.5*1.4'
+operacion = '9-4'
 
 num1 = parseFloat(seleccionNumero(operacion));
 
@@ -27,7 +27,7 @@ switch (operador) {
         break;
 
     case "-":
-        console.log(resta(num1, num2));
+        console.log(resta2(num1, num2));
         break;
 
     case "*":

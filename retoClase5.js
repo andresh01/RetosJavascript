@@ -79,6 +79,15 @@ const mascotas=[mascota,mascota2,mascota3]
 for (let i=0; i<mascotas.length;i++){
     console.log(mascotas[i].nombre+' Es la mascota de '+mascotas[i].dueño)
 }
+
+mascotas.forEach(masc => {
+    console.log(masc.nombre + " es la mascota de " + masc.dueño)
+});
+
+for (const pet of mascotas) {
+    console.log(pet.nombre + " es la mascota de " + pet.dueño)
+}
+
 /* 
 console.log(mascota.nombre+" Es la mascota de "+mascota.dueño)
 
